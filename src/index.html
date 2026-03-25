@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolane • Restaurante</title>
+    
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap">
+    
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos temporários para botões de categoria (mova para style.css depois) -->
+    <style>
+        .category-btn {
+            transition: all 0.25s ease;
+            min-width: 140px;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .category-btn.active {
+            background: #228B22 !important;
+            box-shadow: 0 6px 16px rgba(34,139,34,0.4) !important;
+            transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .category-btn {
+                min-width: 110px;
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .category-btn {
+                min-width: 90px;
+                padding: 0.7rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-poppins bg-[#fff5f8] text-gray-800">
+
+   <!-- Navbar - Versão Melhorada com Logo Maior -->
+<nav class="bg-[#E91E63] text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        
+        <!-- Logo Maior -->
+        <div class="flex items-center gap-3">
+            <img src="./assets/logo chocolanne sf.png" 
+                 alt="Chocolane Logo" 
+                 class="w-14 h-14 sm:w-20 sm:h-20 object-contain flex-shrink-0 hover:scale-110 transition-transform">
+            
+            <div class="leading-none">
+                <span class="font-playfair text-3xl sm:text-4xl lg:text-5xl tracking-tighter font-bold">Choco Lanne</span>
+                <p class="text-[10px] sm:text-xs text-white/90 -mt-1 tracking-widest">DOCERIA</p>
+            </div>
+        </div>
+
+        <!-- Menu Desktop -->
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
+            <a href="#hero" class="hover:text-white/80 transition-colors">Início</a>
+            <a href="#menu" class="hover:text-white/80 transition-colors">Cardápio</a>
+            <a href="#sobre" class="hover:text-white/80 transition-colors">Sobre</a>
+            <a href="#contato" class="hover:text-white/80 transition-colors">Contato</a>
+        </div>
+
+        <!-- Botões da direita -->
+        <div class="flex items-center gap-3 sm:gap-4">
+            <button onclick="toggleCart()" 
+                    class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-2xl transition-all text-sm">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span id="cart-count" class="font-semibold bg-white text-pink-600 text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+            </button>
+            
+            <a href="https://wa.me/5584987951289?text=Olá!%20Quero%20fazer%20um%20pedido%20no%20Chocolane" 
+               target="_blank"
+               class="bg-[#25D366] text-white px-5 py-2.5 rounded-2xl flex items-center gap-2 hover:scale-105 transition-all shadow-lg text-sm font-medium">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span class="hidden sm:inline">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+</nav>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+                <div>
+                    <span class="font-playfair text-2xl sm:text-4xl tracking-tighter font-bold"></span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center w-full">
+            <div class="max-w-2xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm mb-4 sm:mb-6">
+                    <span class="text-green-accent">🍫</span>
+                    <span class="font-medium">Natal • Rio Grande do Norte</span>
+                </div>
+                
+                <h1 class="font-playfair text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight sm:leading-none mb-2 sm:mb-4 tracking-tighter">
+                    CHOCO LANNE
+                </h1>
+                <p class="text-lg sm:text-2xl md:text-3xl font-light text-[#e8d5b7] mb-6 sm:mb-10 px-2">
+                    Doceria & Restaurante
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2">
+                    <button onclick="document.getElementById('menu').scrollIntoView({ behavior: 'smooth' })" 
+                            class="bg-green-accent hover:bg-green-700 text-white px-6 sm:px-10 py-4 sm:py-5 rounded-3xl text-base sm:text-lg font-semibold shadow-2xl transition-all flex items-center gap-2 sm:gap-3 justify-center">
+                        VER CARDÁPIO
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                    
+                    <button onclick="toggleCart()" 
+                            class="border-2 border-white/80 hover:bg-white/10 text-white px-6 sm:px-10 py-4 sm:py-5 rounded-3xl text-base sm:text-lg font-semibold transition-all">
+                        FAZER PEDIDO AGORA
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-12 sm:py-24 bg-choco text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8 sm:mb-16">
+                <span class="bg-green-accent/20 text-green-accent px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium">CARDÁPIO 2026</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl md:text-6xl font-bold mt-3 sm:mt-4">Nossas Delícias</h2>
+                <p class="mt-2 sm:mt-3 text-[#e8d5b7] text-sm sm:text-xl">Clique em qualquer item para adicionar ao carrinho</p>
+            </div>
+
+            <!-- Filtros de categoria -->
+            <div class="text-center mb-8 sm:mb-12 overflow-x-auto">
+                <div class="inline-flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-6 pb-2">
+                    <button 
+                        class="category-btn active px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-white shadow-md transition-all flex-shrink-0" 
+                        data-category="todos"
+                        style="background: #228B22;"
+                    >
+                        Todos
+                    </button>
+                    
+                    <button 
+                        class="category-btn px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-white shadow-md transition-all flex-shrink-0" 
+                        data-category="bebidas"
+                        style="background: #5C3317;"
+                    >
+                        Bebidas
+                    </button>
+                    
+                    <button 
+                        class="category-btn px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-white shadow-md transition-all flex-shrink-0" 
+                        data-category="chocolates"
+                        style="background: #5C3317;"
+                    >
+                        Chocolates & Doces
+                    </button>
+                    
+                    <button 
+                        class="category-btn px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium text-white shadow-md transition-all flex-shrink-0" 
+                        data-category="salgados"
+                        style="background: #5C3317;"
+                    >
+                        Salgados
+                    </button>
+                </div>
+            </div>
+
+            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+                <!-- Itens gerados via JS -->
+            </div>
+
+            <div class="text-center mt-8 sm:mt-16">
+                <button onclick="toggleCart()" 
+                        class="bg-green-accent hover:bg-green-700 px-8 sm:px-12 py-4 sm:py-5 rounded-3xl text-base sm:text-xl font-semibold flex items-center gap-3 mx-auto transition-all">
+                    <i class="fas fa-shopping-basket"></i>
+                    VER CARRINHO E FINALIZAR
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-12 sm:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="bg-choco/10 text-choco px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium">NOSSA HISTÓRIA</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl md:text-6xl font-bold mt-3 sm:mt-4 text-choco">Sobre a Chocolane</h2>
+                <p class="mt-2 sm:mt-3 text-gray-600 text-sm sm:text-lg max-w-2xl mx-auto">Conheça a história por trás de cada delícia que servimos</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
+                <!-- Texto -->
+                <div class="space-y-4 sm:space-y-6">
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        A <strong>Chocolane</strong> nasceu em 2018 com um sonho simples: trazer para Natal a melhor experiência gastronômica centrada em chocolate. O que começou como um pequeno café artesanal se transformou em um restaurante referência na cidade.
+                    </p>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Cada receita é cuidadosamente desenvolvida por nossos chefs especializados, utilizando ingredientes premium selecionados de fornecedores de confiança. Acreditamos que a qualidade não é um detalhe, é a essência do que fazemos.
+                    </p>
+                    <p class="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        Hoje, somos mais que um restaurante. Somos um espaço onde amigos se encontram, famílias celebram momentos especiais e o chocolate é o protagonista de histórias inesquecíveis.
+                    </p>
+                </div>
+
+                <!-- Imagem -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-choco to-choco/70 rounded-3xl p-8 sm:p-12 text-white text-center shadow-2xl">
+                        <i class="fas fa-heart text-6xl sm:text-8xl mb-4 opacity-20"></i>
+                        <h3 class="font-playfair text-3xl sm:text-4xl font-bold mb-4">Feito com Amor</h3>
+                        <p class="text-lg sm:text-xl opacity-90">Cada chocolate é uma expressão de nossa paixão pela excelência</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valores -->
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-gradient-to-br from-green-accent to-green-700 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                    <i class="fas fa-leaf text-4xl sm:text-5xl mb-4"></i>
+                    <h3 class="font-playfair text-xl sm:text-2xl font-bold mb-3">Sustentabilidade</h3>
+                    <p class="text-sm sm:text-base opacity-90">Comprometidos com práticas sustentáveis e responsáveis com o meio ambiente</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-choco to-choco/70 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                    <i class="fas fa-star text-4xl sm:text-5xl mb-4"></i>
+                    <h3 class="font-playfair text-xl sm:text-2xl font-bold mb-3">Qualidade</h3>
+                    <p class="text-sm sm:text-base opacity-90">Ingredientes premium e técnicas apuradas em cada criação</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-choco to-choco/70 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                    <i class="fas fa-users text-4xl sm:text-5xl mb-4"></i>
+                    <h3 class="font-playfair text-xl sm:text-2xl font-bold mb-3">Comunidade</h3>
+                    <p class="text-sm sm:text-base opacity-90">Criando conexões e celebrando momentos especiais juntos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-12 sm:py-24 bg-choco text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="bg-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-medium">ENTRE EM CONTATO</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl md:text-6xl font-bold mt-3 sm:mt-4">Fale Conosco</h2>
+                <p class="mt-2 sm:mt-3 text-[#e8d5b7] text-sm sm:text-lg">Estamos aqui para responder suas dúvidas e receber suas sugestões</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
+                <!-- Formulário -->
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-white/20">
+                    <form class="space-y-4 sm:space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nome Completo</label>
+                            <input type="text" placeholder="Seu nome" class="w-full px-4 sm:px-6 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-green-accent transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" placeholder="seu@email.com" class="w-full px-4 sm:px-6 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-green-accent transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Telefone</label>
+                            <input type="tel" placeholder="(84) 99999-9999" class="w-full px-4 sm:px-6 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-green-accent transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Assunto</label>
+                            <select class="w-full px-4 sm:px-6 py-3 rounded-xl bg-white/10 border border-white/30 text-white focus:outline-none focus:border-green-accent transition-colors">
+                                <option value="" class="bg-choco">Selecione um assunto</option>
+                                <option value="duvida" class="bg-choco">Dúvida</option>
+                                <option value="sugestao" class="bg-choco">Sugestão</option>
+                                <option value="reclamacao" class="bg-choco">Reclamação</option>
+                                <option value="evento" class="bg-choco">Evento Privado</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Mensagem</label>
+                            <textarea placeholder="Sua mensagem aqui..." rows="4" class="w-full px-4 sm:px-6 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 focus:outline-none focus:border-green-accent transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-green-accent hover:bg-green-700 text-white font-semibold py-3 sm:py-4 rounded-xl transition-all transform hover:scale-105">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Informações -->
+                <div class="space-y-6 sm:space-y-8">
+                    <!-- Localização -->
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-accent rounded-full p-3 sm:p-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl sm:text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-lg sm:text-xl font-bold mb-2">Localização</h3>
+                                <p class="text-sm sm:text-base opacity-90">Avenida Getúlio Vargas, 1000<br>Natal, Rio Grande do Norte<br>CEP: 59000-000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horário -->
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-accent rounded-full p-3 sm:p-4 flex-shrink-0">
+                                <i class="fas fa-clock text-xl sm:text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-lg sm:text-xl font-bold mb-2">Horário de Funcionamento</h3>
+                                <p class="text-sm sm:text-base opacity-90">
+                                    <strong>Segunda a Sexta:</strong> 10h às 22h<br>
+                                    <strong>Sábado:</strong> 11h às 23h<br>
+                                    <strong>Domingo:</strong> 11h às 21h
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contato -->
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-accent rounded-full p-3 sm:p-4 flex-shrink-0">
+                                <i class="fas fa-phone text-xl sm:text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-lg sm:text-xl font-bold mb-2">Contato Direto</h3>
+                                <p class="text-sm sm:text-base opacity-90">
+                                    <strong>Telefone:</strong> (84) 3000-0000<br>
+                                    <strong>WhatsApp:</strong> (84) 99999-9999<br>
+                                    <strong>Email:</strong> contato@chocolane.com.br
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociais -->
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20">
+                        <h3 class="font-playfair text-lg sm:text-xl font-bold mb-4">Siga-nos nas Redes</h3>
+                        <div class="flex gap-4 flex-wrap">
+                            <a href="#" class="bg-green-accent hover:bg-green-700 w-12 h-12 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-green-accent hover:bg-green-700 w-12 h-12 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-facebook text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-green-accent hover:bg-green-700 w-12 h-12 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-tiktok text-lg"></i>
+                            </a>
+                            <a href="#" class="bg-whatsapp hover:bg-[#1ead5f] w-12 h-12 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-6 sm:gap-8 mb-8">
+                <!-- Sobre -->
+                <div>
+                    <h4 class="font-playfair text-lg font-bold mb-4">Chocolane</h4>
+                    <p class="text-sm opacity-75">O melhor chocolate de Natal em um único lugar. Qualidade, sabor e experiência.</p>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div>
+                    <h4 class="font-playfair text-lg font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#hero" class="opacity-75 hover:opacity-100 transition-opacity">Início</a></li>
+                        <li><a href="#menu" class="opacity-75 hover:opacity-100 transition-opacity">Cardápio</a></li>
+                        <li><a href="#sobre" class="opacity-75 hover:opacity-100 transition-opacity">Sobre</a></li>
+                        <li><a href="#contato" class="opacity-75 hover:opacity-100 transition-opacity">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Informações -->
+                <div>
+                    <h4 class="font-playfair text-lg font-bold mb-4">Informações</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="opacity-75"><strong>Telefone:</strong> (84) 3000-0000</li>
+                        <li class="opacity-75"><strong>Email:</strong> contato@chocolane.com.br</li>
+                        <li class="opacity-75"><strong>Cidade:</strong> Natal, RN</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-playfair text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-sm opacity-75 mb-3">Receba nossas novidades e promoções</p>
+                    <div class="flex">
+                        <input type="email" placeholder="seu@email.com" class="px-3 py-2 rounded-l-lg bg-white text-gray-900 text-sm flex-1 focus:outline-none">
+                        <button class="px-4 py-2 bg-choco hover:bg-[#C2185B] rounded-r-lg transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divisor -->
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-sm opacity-75">
+                    &copy; 2026 Chocolane Restaurante. Todos os direitos reservados. | 
+                    <a href="#" class="hover:opacity-100 transition-opacity">Política de Privacidade</a> | 
+                    <a href="#" class="hover:opacity-100 transition-opacity">Termos de Uso</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrinho Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/70 hidden flex items-end md:items-center justify-center z-[9999]">
+        <div class="bg-white w-full max-w-lg md:rounded-3xl cart-modal max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="flex justify-between items-center px-6 sm:px-8 py-4 sm:py-6 border-b">
+                <h3 class="text-xl sm:text-2xl font-semibold flex items-center gap-2 sm:gap-3">
+                    <i class="fas fa-shopping-cart"></i> 
+                    Seu Carrinho
+                </h3>
+                <button onclick="toggleCart()" class="text-2xl sm:text-3xl text-gray-400 hover:text-gray-600">×</button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-auto p-4 sm:p-6 space-y-4 sm:space-y-6"></div>
+
+            <div class="p-4 sm:p-6 border-t bg-gray-50">
+                <div class="flex justify-between text-base sm:text-lg mb-2">
+                    <span class="font-medium">Subtotal</span>
+                    <span id="subtotal" class="font-semibold">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-lg sm:text-2xl font-bold mt-4">
+                    <span>Total</span>
+                    <span id="total-price" class="text-choco">R$ 0,00</span>
+                </div>
+
+                <button onclick="goToCheckout()" 
+                        class="mt-6 sm:mt-8 w-full bg-choco hover:bg-[#C2185B] text-white py-4 sm:py-6 rounded-3xl text-base sm:text-xl font-semibold transition-all flex items-center justify-center gap-2 sm:gap-3">
+                    FINALIZAR PEDIDO
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-[99999] p-4">
+        <div class="bg-white max-w-lg w-full rounded-3xl p-6 sm:p-8">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <h3 class="text-xl sm:text-2xl font-bold">Finalizar Pedido</h3>
+                <button onclick="closeCheckout()" class="text-3xl sm:text-4xl text-gray-400 hover:text-gray-600">×</button>
+            </div>
+            <p class="text-center text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">Aqui entraria o formulário de endereço + pagamento (PIX, cartão...)</p>
+            <button onclick="processarPedido()" 
+                    class="w-full bg-choco text-white py-4 sm:py-5 rounded-3xl text-base sm:text-lg font-semibold hover:bg-[#C2185B] transition-all">
+                CONFIRMAR E PAGAR
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALHES DO PRODUTO -->
+    <div id="product-modal" class="fixed inset-0 bg-black/70 hidden flex items-center justify-center z-[9999] transition-opacity duration-300 p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            <button id="close-modal" class="absolute top-3 sm:top-4 right-4 sm:right-6 text-3xl sm:text-4xl text-gray-400 hover:text-gray-600 transition-colors z-10">
+                ×
+            </button>
+            <div id="modal-content" class="p-6 sm:p-8">
+                <!-- Conteúdo preenchido via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5584987951289?text=Olá!%20Quero%20fazer%20um%20pedido%20no%20Chocolane" 
+       target="_blank"
+       class="whatsapp-float fixed bottom-6 sm:bottom-8 right-6 sm:right-8 bg-whatsapp text-white w-14 h-14 sm:w-16 sm:h-16 rounded-3xl flex items-center justify-center shadow-2xl text-3xl sm:text-4xl z-[100]">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

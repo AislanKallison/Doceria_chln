@@ -1,0 +1,512 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Variáveis de cor (root) */
+:root {
+    --choco:       #E91E63;  /* Rosa Primário */
+    --choco-dark:  #C2185B;  /* Rosa Escuro */
+    --green:       #228B22;  /* Verde Mantido */
+    --green-dark:  #1a6e1a;  /* Verde Escuro */
+    --whatsapp:    #25D366;  /* WhatsApp */
+    --light-bg:    #fff5f8;  /* Fundo Rosa Claro */
+    --text-light:  #f48fb1;  /* Texto Rosa Claro */
+}
+
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Classes utilitárias de fonte e cor */
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-poppins  { font-family: 'Poppins', sans-serif; }
+
+.bg-choco       { background-color: var(--choco); }
+.bg-choco-dark  { background-color: var(--choco-dark); }
+.text-choco     { color: var(--choco); }
+.bg-green-accent { background-color: var(--green); }
+.text-green-accent { color: var(--green); }
+.bg-whatsapp    { background-color: var(--whatsapp); }
+
+/* Hero background */
+.hero-bg {
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.85) 0%, rgba(194, 24, 91, 0.85) 100%),
+                url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat fixed;
+    background-attachment: scroll; /* Muda para scroll em mobile para melhor performance */
+}
+
+/* Responsividade do Hero Background */
+@media (max-width: 768px) {
+    .hero-bg {
+        background-attachment: scroll;
+        min-height: auto;
+    }
+}
+
+/* Efeitos nos cards do menu */
+.menu-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(92, 51, 23, 0.3),
+                0 10px 10px -5px rgba(92, 51, 23, 0.2);
+}
+
+@media (max-width: 640px) {
+    .menu-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animação do modal de carrinho */
+.cart-modal {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Logo Image */
+img[alt="Chocolane Logo"] {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+@media (max-width: 640px) {
+    img[alt="Chocolane Logo"] {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Botão flutuante WhatsApp */
+.whatsapp-float {
+    animation: pulse 2s infinite ease-in-out;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+}
+
+/* Botões de categoria (no cardápio) */
+.category-btn {
+    background: rgba(92, 51, 23, 0.6);
+    color: white;
+    border: 2px solid transparent;
+    min-width: 140px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+.category-btn:hover {
+    background: rgba(92, 51, 23, 0.85);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.category-btn.active {
+    background: var(--green) !important;
+    border-color: var(--green-dark);
+    box-shadow: 0 6px 16px rgba(34,139,34,0.45);
+    transform: translateY(-2px);
+}
+
+/* Responsividade dos botões de categoria */
+@media (max-width: 768px) {
+    .category-btn {
+        min-width: 110px;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .category-btn {
+        min-width: 90px;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Modal de detalhes do produto */
+#product-modal {
+    backdrop-filter: blur(6px);
+    transition: opacity 0.3s ease;
+}
+
+#product-modal .modal-image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 640px) {
+    #product-modal .modal-image {
+        height: 240px;
+        margin-bottom: 1rem;
+    }
+}
+
+#product-modal h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--choco);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+    #product-modal h2 {
+        font-size: 1.75rem;
+    }
+}
+
+#product-modal .price {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    #product-modal .price {
+        font-size: 1.75rem;
+    }
+}
+
+#product-modal .desc {
+    font-size: 1.125rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+    #product-modal .desc {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+#product-modal .category-tag {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+    #product-modal .category-tag {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* ==================== ESTILOS DA SEÇÃO SOBRE ==================== */
+
+#sobre {
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+}
+
+#sobre .space-y-4 {
+    line-height: 1.8;
+}
+
+#sobre strong {
+    color: var(--choco);
+    font-weight: 600;
+}
+
+/* Cards de valores */
+#sobre .bg-gradient-to-br {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#sobre .bg-gradient-to-br:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+}
+
+@media (max-width: 640px) {
+    #sobre .bg-gradient-to-br {
+        padding: 1.5rem !important;
+    }
+    
+    #sobre .bg-gradient-to-br i {
+        font-size: 2.5rem !important;
+    }
+}
+
+/* ==================== ESTILOS DA SEÇÃO CONTATO ==================== */
+
+#contato {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Campos de formulário */
+#contato input,
+#contato textarea,
+#contato select {
+    transition: all 0.3s ease;
+}
+
+#contato input:focus,
+#contato textarea:focus,
+#contato select:focus {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--green) !important;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.1);
+}
+
+#contato input::placeholder,
+#contato textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botão de envio */
+#contato button[type="submit"] {
+    position: relative;
+    overflow: hidden;
+}
+
+#contato button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+}
+
+#contato button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Cards de informação */
+#contato .bg-white\/10 {
+    transition: all 0.3s ease;
+}
+
+#contato .bg-white\/10:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Ícones dos cards de contato */
+#contato .bg-green-accent {
+    transition: all 0.3s ease;
+}
+
+#contato .bg-white\/10:hover .bg-green-accent {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Redes sociais */
+#contato .bg-green-accent,
+#contato .bg-whatsapp {
+    transition: all 0.3s ease;
+}
+
+#contato a.bg-green-accent:hover,
+#contato a.bg-whatsapp:hover {
+    box-shadow: 0 8px 20px rgba(34, 139, 34, 0.4);
+}
+
+@media (max-width: 640px) {
+    #contato .bg-white\/10 {
+        padding: 1.5rem !important;
+    }
+    
+    #contato .bg-green-accent {
+        padding: 0.75rem !important;
+    }
+    
+    #contato .bg-green-accent i {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* ==================== ESTILOS DO RODAPÉ ==================== */
+
+footer {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    border-top: 3px solid var(--choco);
+}
+
+footer h4 {
+    color: white;
+    font-weight: 700;
+}
+
+footer a {
+    transition: all 0.3s ease;
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--choco);
+}
+
+footer input {
+    transition: all 0.3s ease;
+}
+
+footer input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+footer button {
+    transition: all 0.3s ease;
+}
+
+footer button:hover {
+    transform: scale(1.05);
+}
+
+/* Divisor do rodapé */
+footer .border-t {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+    footer {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    footer h4 {
+        font-size: 1rem;
+    }
+}
+
+/* ==================== RESPONSIVIDADE GERAL ==================== */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-btn {
+        min-width: 80px;
+        padding: 0.6rem 0.7rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Melhorias de acessibilidade e usabilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Suporte para dark mode (opcional) */
+@media (prefers-color-scheme: dark) {
+    .bg-white {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+}
+
+/* ==================== ANIMAÇÕES ADICIONAIS ==================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Aplicar animações aos elementos */
+#sobre > div > div:first-child {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+#contato > div > div:first-child {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+footer {
+    animation: fadeInUp 0.6s ease-out;
+}
