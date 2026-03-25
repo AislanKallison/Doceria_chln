@@ -17,8 +17,12 @@ const products = [
     { id: 11, name: "Pastel de Carne com Molho de Chocolate", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
 
     // Pratos
-    { id: 5, name: "Steak ao Molho de Chocolate Amargo",  price: 58.00, desc: "Corte nobre com redução de cacau",                  img: "https://picsum.photos/id/870/300/300", category: "pratos" }
+    { id: 5, name: "Steak ao Molho de Chocolate Amargo",  price: 58.00, desc: "Corte nobre com redução de cacau",                  img: "https://picsum.photos/id/870/300/300", category: "pratos" },
+    { id: 5, name: "Steak ao Molho de Chocolate Amargo",  price: 58.00, desc: "Corte nobre com redução de cacau",                  img: "https://picsum.photos/id/870/300/300", category: "pratos" },
+
 ];
+
+
 
 let cart = [];
 
