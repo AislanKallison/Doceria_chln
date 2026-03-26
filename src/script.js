@@ -1,10 +1,16 @@
 // ==================== PRODUTOS ====================
+// ==================== PRODUTOS ====================
 const products = [
     // Bebidas
     { id: 1, name: "Sucos",      price: 14.90, desc: "Cacau 70% com leite fresco e canela",              img: "https://picsum.photos/id/201/300/300", category: "bebidas" },
     { id: 12, name: "Refrigerante",  price: 12.90, desc: "Expresso duplo + raspas de chocolate",              img: "https://picsum.photos/id/1015/300/300", category: "bebidas" },
     { id: 13, name: "Café",  price: 12.90, desc: "Expresso duplo + raspas de chocolate",              img: "https://picsum.photos/id/1015/300/300", category: "bebidas" },
-   
+    
+    // 🔥 NOVOS ITENS EM BEBIDAS
+    { id: 14, name: "Café Preto",     price: 14.90, desc: "Café preto intenso, feito na hora",                  img: "https://picsum.photos/id/870/300/300", category: "bebidas" },
+    { id: 15, name: "Cappuccino",     price: 18.90, desc: "Cappuccino cremoso com leite fresco e canela",      img: "https://picsum.photos/id/201/300/300", category: "bebidas" },
+    { id: 16, name: "Café Gelado",    price: 16.90, desc: "Café gelado com gelo e raspas de chocolate",        img: "https://picsum.photos/id/870/300/300", category: "bebidas" },
+
     // Chocolates & Doces
     { id: 2, name: "Brownie Recheado",       price: 42.00, desc: "Para 2 pessoas + frutas da estação",               img: "https://picsum.photos/id/292/300/300", category: "chocolates" },
     { id: 3, name: "Bolo Mini", price: 19.50, desc: "Nozes caramelizadas e calda quente",               img: "https://picsum.photos/id/312/300/300", category: "chocolates" },
@@ -16,8 +22,7 @@ const products = [
     { id: 9,  name: "Pão de Queijo",       price: 9.90,  desc: "Massa crocante recheada com frango e catupiry", img: "https://picsum.photos/id/450/300/300", category: "salgados" },
     { id: 10, name: "Sanduiche de ovos Premium",       price: 11.50, desc: "Empada gourmet com toque de chocolate",         img: "https://picsum.photos/id/460/300/300", category: "salgados" },
     { id: 11, name: "Salgados", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
-    { id: 11, name: "Bolos", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
-
+    { id: 17, name: "Bolos", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "chocolates" },  // corrigido id duplicado
 ];
 
 
