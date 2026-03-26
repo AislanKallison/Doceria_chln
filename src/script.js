@@ -1,24 +1,22 @@
 // ==================== PRODUTOS ====================
 const products = [
     // Bebidas
-    { id: 1, name: "Chocolate Quente Artesanal",      price: 14.90, desc: "Cacau 70% com leite fresco e canela",              img: "https://picsum.photos/id/201/300/300", category: "bebidas" },
-    { id: 6, name: "Café com Chocolate e Cardamomo",  price: 12.90, desc: "Expresso duplo + raspas de chocolate",              img: "https://picsum.photos/id/1015/300/300", category: "bebidas" },
-
+    { id: 1, name: "Sucos",      price: 14.90, desc: "Cacau 70% com leite fresco e canela",              img: "https://picsum.photos/id/201/300/300", category: "bebidas" },
+    { id: 12, name: "Refrigerante",  price: 12.90, desc: "Expresso duplo + raspas de chocolate",              img: "https://picsum.photos/id/1015/300/300", category: "bebidas" },
+    { id: 13, name: "Café",  price: 12.90, desc: "Expresso duplo + raspas de chocolate",              img: "https://picsum.photos/id/1015/300/300", category: "bebidas" },
+   
     // Chocolates & Doces
-    { id: 2, name: "Fondue de Chocolate Belga",       price: 42.00, desc: "Para 2 pessoas + frutas da estação",               img: "https://picsum.photos/id/292/300/300", category: "chocolates" },
-    { id: 3, name: "Brownie com Sorvete de Baunilha", price: 19.50, desc: "Nozes caramelizadas e calda quente",               img: "https://picsum.photos/id/312/300/300", category: "chocolates" },
-    { id: 4, name: "Torta de Chocolate com Avelã",    price: 26.00, desc: "Massa crocante e recheio cremoso",                  img: "https://picsum.photos/id/431/300/300", category: "chocolates" },
-    { id: 7, name: "Trufa de Chocolate 70% (6 un)",   price: 28.00, desc: "Caixa gourmet para presentear",                     img: "https://picsum.photos/id/160/300/300", category: "chocolates" },
-    { id: 8, name: "Pudim de Chocolate com Pistache", price: 17.50, desc: "Finalizado com flor de sal",                        img: "https://picsum.photos/id/201/300/300", category: "chocolates" },
+    { id: 2, name: "Brownie Recheado",       price: 42.00, desc: "Para 2 pessoas + frutas da estação",               img: "https://picsum.photos/id/292/300/300", category: "chocolates" },
+    { id: 3, name: "Bolo Mini", price: 19.50, desc: "Nozes caramelizadas e calda quente",               img: "https://picsum.photos/id/312/300/300", category: "chocolates" },
+    { id: 4, name: "Brigadeiros",    price: 26.00, desc: "Massa crocante e recheio cremoso",                  img: "https://picsum.photos/id/431/300/300", category: "chocolates" },
+    { id: 7, name: "Cupcake",   price: 28.00, desc: "Caixa gourmet para presentear",                     img: "https://picsum.photos/id/160/300/300", category: "chocolates" },
+    { id: 8, name: "Tortinha de Limão", price: 17.50, desc: "Finalizado com flor de sal",                        img: "https://picsum.photos/id/201/300/300", category: "chocolates" },
 
     // Salgados
-    { id: 9,  name: "Coxinha de Frango com Catupiry",       price: 9.90,  desc: "Massa crocante recheada com frango e catupiry", img: "https://picsum.photos/id/450/300/300", category: "salgados" },
-    { id: 10, name: "Empada de Queijo com Chocolate",       price: 11.50, desc: "Empada gourmet com toque de chocolate",         img: "https://picsum.photos/id/460/300/300", category: "salgados" },
-    { id: 11, name: "Pastel de Carne com Molho de Chocolate", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
-
-    // Pratos
-    { id: 5, name: "Steak ao Molho de Chocolate Amargo",  price: 58.00, desc: "Corte nobre com redução de cacau",                  img: "https://picsum.photos/id/870/300/300", category: "pratos" },
-    { id: 5, name: "Steak ao Molho de Chocolate Amargo",  price: 58.00, desc: "Corte nobre com redução de cacau",                  img: "https://picsum.photos/id/870/300/300", category: "pratos" },
+    { id: 9,  name: "Pão de Queijo",       price: 9.90,  desc: "Massa crocante recheada com frango e catupiry", img: "https://picsum.photos/id/450/300/300", category: "salgados" },
+    { id: 10, name: "Sanduiche de ovos Premium",       price: 11.50, desc: "Empada gourmet com toque de chocolate",         img: "https://picsum.photos/id/460/300/300", category: "salgados" },
+    { id: 11, name: "Salgados", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
+    { id: 11, name: "Bolos", price: 10.90, desc: "Pastel crocante com redução de chocolate",     img: "https://picsum.photos/id/470/300/300", category: "salgados" },
 
 ];
 
